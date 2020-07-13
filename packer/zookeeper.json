@@ -66,7 +66,7 @@
             "type": "ansible",
             "host_alias": "{{user `ansible_host_alias`}}",
             "extra_arguments": [
-                "--extra-vars", "aws_region={{user `aws_region`}}"
+                "--extra-vars", "aws_region={{user `aws_region`}} resource_bucket_name={{user `resource_bucket_name`}} resource_bucket_object_prefix={{user `resource_bucket_object_prefix`}}"
             ],
             "playbook_file": "../ansible/playbook.yml"
         }
