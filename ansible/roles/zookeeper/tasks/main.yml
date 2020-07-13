@@ -13,9 +13,9 @@
     groups: "{{ zookeeper_service_group }}"
     system: yes
 
-- name: Create {{ zookeeper_directory }} persistent data directory
+- name: Create {{ zookeeper_install_directory }} persistent data directory
   file:
-    path: "{{ zookeeper_directory }}"
+    path: "{{ zookeeper_install_directory }}"
     state: directory
     owner: "{{ zookeeper_service_user }}"
     group: "{{ zookeeper_service_group }}"
