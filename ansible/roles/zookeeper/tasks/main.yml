@@ -1,5 +1,11 @@
 ---
 
+- pip:
+    name:
+      - boto
+      - botocore
+      - boto3
+
 - name: Create {{ zookeeper_service_group }} system group
   group:
     name: "{{ zookeeper_service_group }}"
