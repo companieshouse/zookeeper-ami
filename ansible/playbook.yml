@@ -3,4 +3,5 @@
 - hosts: zookeeper
   become: true
   roles:
+    - pip
     - zookeeper
