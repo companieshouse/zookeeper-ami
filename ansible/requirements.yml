@@ -6,4 +6,4 @@
 
 - src: https://github.com/companieshouse/ansible-role-jdk
   name: jdk
-  version: packer-1.6.0-ansible-2.9.10-container-1.0.0
+  version: java8-0.1.0
