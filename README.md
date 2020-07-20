@@ -1,2 +1,2 @@
-# ami-repository-template
+# zookeeper-ami
 
