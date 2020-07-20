@@ -3,4 +3,3 @@
 zookeeper_install_directory: /opt/zookeeper
 zookeeper_service_group: zookeeper
 zookeeper_service_user: zookeeper
-zookeeper_work_directory: /var/lib/zookeeper
