@@ -23,6 +23,7 @@ variable "aws_instance_type" {
 
 variable "aws_profile" {
   type        = string
+  default     = "development-eu-west-2"
   description = ""
 }
 
