@@ -63,6 +63,15 @@
     ],
     "provisioners": [
         {
+            "type": "shell-local",
+            "inline": [
+              "printenv AWS_INSTANCE_ID > metadata/packer"
+            ],
+            "environment_vars": [
+              "AWS_INSTANCE_ID={{build `ID`}}"
+            ]
+        },
+        {
             "type": "ansible",
             "host_alias": "{{user `ansible_host_alias`}}",
             "extra_arguments": [
