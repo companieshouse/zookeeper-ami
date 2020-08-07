@@ -63,6 +63,7 @@ variable "terminate_after_minutes" {
 }
 
 variable "warning_after_minutes" {
-  type        = 50
+  type        = number
+  default     = 50
   description = "The number of minutes after which a self-termination warning is sent to terminals of all currently logged in users"
 }
