@@ -65,6 +65,7 @@
         {
             "type": "shell-local",
             "inline": [
+              "mkdir ./metadata"
               "printenv AWS_INSTANCE_ID > metadata/packer"
             ],
             "environment_vars": [
