@@ -6,7 +6,8 @@ variable "ansible_host_alias" {
 
 variable "ami_name_prefix" {
   type        = string
-  description = "zookeeper-ami"
+  default     = "zookeeper-ami"
+  description = ""
 }
 
 variable "version" {
@@ -27,12 +28,14 @@ variable "aws_profile" {
 
 variable "aws_region" {
   type        = string
-  description = "eu-west-2"
+  default     = "eu-west-2"
+  description = ""
 }
 
 variable "ssh_username" {
   type        = string
-  description = "centos"
+  default     = "centos"
+  description = ""
 }
 
 variable "root_volume_size_gb" {
@@ -43,12 +46,14 @@ variable "root_volume_size_gb" {
 
 variable "source_ami_filter_name" {
   type        = string
-  description = "CentOS 8* x86_64"
+  default     = "CentOS 8* x86_64"
+  description = ""
 }
 
 variable "source_ami_owner_id" {
   type        = string
-  description = "125523088429"
+  default     = "125523088429"
+  description = ""
 }
 
 variable "aws_subnet_name_prefix" {
