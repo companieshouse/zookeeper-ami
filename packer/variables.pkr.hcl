@@ -73,3 +73,8 @@ variable "warning_after_minutes" {
   default     = 50
   description = "The number of minutes after which a self-termination warning is sent to terminals of all currently logged in users"
 }
+
+variable "playbook_file_path" {
+  type        = string
+  description = ""
+}
