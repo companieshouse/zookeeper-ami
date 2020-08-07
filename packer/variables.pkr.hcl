@@ -76,5 +76,6 @@ variable "warning_after_minutes" {
 
 variable "playbook_file_path" {
   type        = string
+  default     = "../ansible/playbook.yml"
   description = ""
 }
