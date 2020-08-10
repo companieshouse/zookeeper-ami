@@ -62,18 +62,6 @@ variable "aws_subnet_filter_name" {
   description = ""
 }
 
-variable "terminate_after_minutes" {
-  type        = number
-  default     = 60
-  description = "The number of minutes after which the instance should self-terminate to avoid orphaned EC2 instance for failed builds; set to a value that ensures adequate time for provisioning to complete"
-}
-
-variable "warning_after_minutes" {
-  type        = number
-  default     = 50
-  description = "The number of minutes after which a self-termination warning is sent to terminals of all currently logged in users"
-}
-
 variable "playbook_file_path" {
   type        = string
   default     = "../ansible/playbook.yml"
