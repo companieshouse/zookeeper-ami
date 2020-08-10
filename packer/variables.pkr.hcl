@@ -79,3 +79,13 @@ variable "playbook_file_path" {
   default     = "../ansible/playbook.yml"
   description = ""
 }
+
+variable "resource_bucket_name" {
+  type        = string
+  description = ""
+}
+
+variable "resource_bucket_object_prefix" {
+  type        = string
+  description = ""
+}
