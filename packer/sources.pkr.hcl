@@ -23,7 +23,7 @@ source "amazon-ebs" "builder" {
   source_ami_filter {
     filters = {
       virtualization-type = "hvm"
-      name =  "${var.source_ami_filter_name}*"
+      name =  "${var.source_ami_filter_name}"
       root-device-type = "ebs"
     }
     owners = ["${var.source_ami_owner_id}"]
@@ -32,7 +32,7 @@ source "amazon-ebs" "builder" {
 
   subnet_filter {
     filters = {
-          "tag:Name": "${var.aws_subnet_name_prefix}*"
+          "tag:Name": "${var.aws_subnet_filter_name}"
     }
     most_free = true
     random = false

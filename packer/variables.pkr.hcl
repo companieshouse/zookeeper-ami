@@ -47,7 +47,7 @@ variable "root_volume_size_gb" {
 
 variable "source_ami_filter_name" {
   type        = string
-  default     = "CentOS 8* x86_64"
+  default     = "CentOS 8* x86_64*"
   description = ""
 }
 
@@ -57,7 +57,7 @@ variable "source_ami_owner_id" {
   description = ""
 }
 
-variable "aws_subnet_name_prefix" {
+variable "aws_subnet_filter_name" {
   type        = string
   description = ""
 }
