@@ -1,79 +1,79 @@
 variable "ami_name_prefix" {
   type        = string
   default     = "zookeeper-ami"
-  description = ""
+  description = "The prefix string that will be used for the name tags of the resulting AMI and snapshot(s); the version string will be appended automatically"
 }
 
 variable "ansible_host_alias" {
   type        = string
   default     = "zookeeper"
-  description = ""
+  description = "The Ansible host alias"
 }
 
 variable "aws_instance_type" {
   type        = string
   default     = "t2.small"
-  description = ""
+  description = "The EC2 instance type used when building the AMI"
 }
 
 variable "aws_profile" {
   type        = string
   default     = "development-eu-west-2"
-  description = ""
+  description = "The profile name associated with AWS credentials that will be used when building the AMI"
 }
 
 variable "aws_region" {
   type        = string
   default     = "eu-west-2"
-  description = ""
+  description = "The AWS region in which the AMI will be built"
 }
 
 variable "aws_source_ami_filter_name" {
   type        = string
   default     = "CentOS 8* x86_64*"
-  description = ""
+  description = "The source AMI filter string. Any filter described by the DescribeImages API documentation is valid. If multiple images match then the latest will be used"
 }
 
 variable "aws_source_ami_owner_id" {
   type        = string
   default     = "125523088429"
-  description = ""
+  description = "The source AMI owner ID; used in combination with aws_source_ami_filter_name to filter for matching source AMIs"
 }
 
 variable "aws_subnet_filter_name" {
   type        = string
-  description = ""
+  description = "The subnet filter string. Any filter described by the DescribeSubnets API documentation is valid. If multiple subnets match then the one with the most IPv4 addresses free will be used"
 }
 
 variable "playbook_file_path" {
   type        = string
   default     = "../ansible/playbook.yml"
-  description = ""
+  description = "The relative path to the Ansible playbook file"
 }
 
 variable "resource_bucket_name" {
   type        = string
-  description = ""
+  description = "The name of the S3 resources bucket"
 }
 
-variable "resource_bucket_object_prefix" {
+variable "resource_bucket_zookeeper_prefix" {
   type        = string
-  description = ""
+  description = "The object prefix for ZooKeeper packages within the S3 resources bucket"
 }
 
 variable "root_volume_size_gb" {
   type        = number
   default     = 20
-  description = ""
+  description = "The EC2 instance root volume size in Gibibytes (GiB)"
 }
 
 variable "ssh_username" {
   type        = string
   default     = "centos"
-  description = ""
+  description = "The username Packer will use when connecting with SSH"
 }
 
 variable "version" {
   type        = string
-  description = ""
+  description = "The semantic version number for the AMI; the version string will be appended automatically to the name tags added to the resulting AMI and snapshot(s)"
 }
