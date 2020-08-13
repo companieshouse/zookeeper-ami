@@ -40,11 +40,6 @@ source "amazon-ebs" "builder" {
 
   tags = {
     Name    = "${var.ami_name_prefix}-${var.version}"
-    Builder = "packer"
-  }
-
-  snapshot_tags = {
-    Name    = "${var.ami_name_prefix}-${var.version}"
-    Builder = "packer"
+    Builder = "packer-{{packer_version}}"
   }
 }
