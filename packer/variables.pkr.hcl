@@ -1,17 +1,12 @@
-variable "ansible_host_alias" {
-  type        = string
-  default     = "zookeeper"
-  description = ""
-}
-
 variable "ami_name_prefix" {
   type        = string
   default     = "zookeeper-ami"
   description = ""
 }
 
-variable "version" {
+variable "ansible_host_alias" {
   type        = string
+  default     = "zookeeper"
   description = ""
 }
 
@@ -33,25 +28,13 @@ variable "aws_region" {
   description = ""
 }
 
-variable "ssh_username" {
-  type        = string
-  default     = "centos"
-  description = ""
-}
-
-variable "root_volume_size_gb" {
-  type        = number
-  default     = 20
-  description = ""
-}
-
-variable "source_ami_filter_name" {
+variable "aws_source_ami_filter_name" {
   type        = string
   default     = "CentOS 8* x86_64*"
   description = ""
 }
 
-variable "source_ami_owner_id" {
+variable "aws_source_ami_owner_id" {
   type        = string
   default     = "125523088429"
   description = ""
@@ -74,6 +57,23 @@ variable "resource_bucket_name" {
 }
 
 variable "resource_bucket_object_prefix" {
+  type        = string
+  description = ""
+}
+
+variable "root_volume_size_gb" {
+  type        = number
+  default     = 20
+  description = ""
+}
+
+variable "ssh_username" {
+  type        = string
+  default     = "centos"
+  description = ""
+}
+
+variable "version" {
   type        = string
   description = ""
 }
