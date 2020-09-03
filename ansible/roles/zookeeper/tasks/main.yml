@@ -29,7 +29,7 @@
 - name: Download ZooKeeper binary package
   aws_s3:
     bucket: "{{ resource_bucket_name }}"
-    object: "{{ resource_bucket_object_prefix }}/apache-zookeeper-{{ zookeeper_version }}-bin.tar.gz"
+    object: "{{ resource_bucket_zookeeper_prefix }}/apache-zookeeper-{{ zookeeper_version }}-bin.tar.gz"
     dest: "{{ temp_dir.path }}/apache-zookeeper-{{ zookeeper_version }}-bin.tar.gz"
     mode: get
 
