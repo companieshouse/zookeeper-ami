@@ -1,5 +1,5 @@
 source "amazon-ebs" "builder" {
-  ami_name             = "${var.ami_name_prefix}-${var.version}"
+  ami_name             = "${var.ami_name_prefix}-ami-${var.version}"
   communicator         = "ssh"
   instance_type        = var.aws_instance_type
   region               = var.aws_region
@@ -40,7 +40,9 @@ source "amazon-ebs" "builder" {
   }
 
   tags = {
-    Name    = "${var.ami_name_prefix}-${var.version}"
+    AMI     = "${var.ami_name_prefix}"
+    Name    = "${var.ami_name_prefix}-ami-${var.version}"
     Builder = "packer-{{packer_version}}"
+    Service = "packer-builder"
   }
 }

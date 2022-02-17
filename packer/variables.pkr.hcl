@@ -1,13 +1,7 @@
 variable "ami_name_prefix" {
   type        = string
-  default     = "zookeeper-ami"
-  description = "The prefix string that will be used for the name tags of the resulting AMI and snapshot(s); the version string will be appended automatically"
-}
-
-variable "ansible_host_alias" {
-  type        = string
   default     = "zookeeper"
-  description = "The Ansible host alias"
+  description = "The prefix string that will be used for the name tags of the resulting AMI and snapshot(s); the version string will be appended automatically"
 }
 
 variable "aws_instance_type" {
