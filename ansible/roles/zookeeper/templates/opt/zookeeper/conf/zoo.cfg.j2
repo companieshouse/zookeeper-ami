@@ -1,0 +1,10 @@
+# This configuration is intended for development use only. Do NOT use in a production environment
+
+autopurge.purgeInterval={{ zookeeper_autopurge_interval_hours }}
+autopurge.snapRetainCount={{ zookeeper_snapshot_retain_count }}
+clientPort=2181
+dataDir={{ zookeeper_data_directory }}
+initLimit={{ zookeeper_init_limit_ticks }}
+snapCount={{ zookeeper_snap_count }}
+syncLimit={{ zookeeper_sync_limit_ticks }}
+tickTime=2000

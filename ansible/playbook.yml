@@ -3,6 +3,4 @@
 - hosts: zookeeper
   become: true
   roles:
-    - pip
-    - jdk
     - zookeeper
