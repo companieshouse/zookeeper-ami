@@ -42,10 +42,13 @@ source "amazon-ebs" "builder" {
     random = false
   }
 
-  tags = {
+  run_tags = {
     AMI     = "${var.ami_name_prefix}"
-    Name    = "${var.ami_name_prefix}-ami-${var.version}"
-    Builder = "packer-{{packer_version}}"
     Service = "packer-builder"
+  }
+
+  tags = {
+    Builder = "packer-{{packer_version}}"
+    Name    = "${var.ami_name_prefix}-ami-${var.version}"
   }
 }
