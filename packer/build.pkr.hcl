@@ -4,7 +4,7 @@ build {
   ]
 
   provisioner "ansible" {
-    inventory_file = "inventory/inventory_aws_ec2.yml"
+    inventory_file = "inventory"
     playbook_file = "${var.playbook_file_path}"
     extra_arguments  = [
       "-e", "aws_region=${var.aws_region}",
