@@ -4,8 +4,7 @@ build {
   ]
 
   provisioner "ansible" {
-    groups = [ "zookeeper" ]
-    host_alias = "${var.ansible_host_alias}"
+    groups = [ "${var.configuration_group}" ]
     playbook_file = "${var.playbook_file_path}"
     extra_arguments  = [
       "-e", "aws_region=${var.aws_region}",

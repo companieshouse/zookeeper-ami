@@ -9,12 +9,6 @@ variable "ami_name_prefix" {
   description = "The prefix string that will be used for the name tags of the resulting AMI and snapshot(s); the version string will be appended automatically"
 }
 
-variable "ansible_host_alias" {
-  type        = string
-  default     = "zookeeper"
-  description = "The Ansible host alias"
-}
-
 variable "aws_instance_type" {
   type        = string
   default     = "t3.small"
@@ -42,6 +36,12 @@ variable "aws_source_ami_owner_id" {
 variable "aws_subnet_filter_name" {
   type        = string
   description = "The subnet filter string. Any filter described by the DescribeSubnets API documentation is valid. If multiple subnets match then the one with the most IPv4 addresses free will be used"
+}
+
+variable "configuration_group" {
+  type        = string
+  default     = "zookeeper"
+  description = "The name of the group to which to add the instance for configuration purposes"
 }
 
 variable "force_delete_snapshot" {
