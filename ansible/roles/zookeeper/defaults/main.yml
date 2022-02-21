@@ -1,5 +1,14 @@
 ---
 
-zookeeper_install_directory: /opt/zookeeper
+zookeeper_autopurge_interval_hours: 1
+zookeeper_data_directory: /tmp/zookeeper
+zookeeper_extra_jvm_flags: -Xms{{ zookeeper_heap_mb }}m
+zookeeper_heap_mb: 512
+zookeeper_init_limit_ticks: 10
+zookeeper_install_directory: /opt
 zookeeper_service_group: zookeeper
 zookeeper_service_user: zookeeper
+zookeeper_snap_count: 20000
+zookeeper_snapshot_retain_count: 3
+zookeeper_sync_limit_ticks: 5
+zookeeper_timezone: Europe/London

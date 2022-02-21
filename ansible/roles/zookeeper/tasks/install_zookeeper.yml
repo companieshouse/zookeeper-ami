@@ -1,0 +1,107 @@
+---
+
+- name: Create {{ zookeeper_service_group }} system group
+  group:
+    name: "{{ zookeeper_service_group }}"
+    state: present
+    system: yes
+
+- name: Create {{ zookeeper_service_user }} system user
+  user:
+    name: "{{ zookeeper_service_user }}"
+    shell: /bin/bash
+    groups: "{{ zookeeper_service_group }}"
+    system: yes
+
+- name: Create {{ zookeeper_install_directory }} persistent data directory
+  file:
+    path: "{{ zookeeper_install_directory }}"
+    state: directory
+    owner: "{{ zookeeper_service_user }}"
+    group: "{{ zookeeper_service_group }}"
+    mode: 0755
+
+- name: Create temporary directory...
+  tempfile:
+    state: directory
+  register: temp_dir
+
+- name: Created
+  ansible.builtin.debug:
+    msg: "{{ temp_dir.path }}"
+
+- name: "Download apache-zookeeper-{{ zookeeper_version }}-bin.tar.gz"
+  get_url:
+    url: "{{ download_url }}/apache-zookeeper-{{ zookeeper_version }}-bin.tar.gz"
+    dest: "{{ temp_dir.path }}"
+    mode: 0600
+    checksum: "sha512:{{ download_url }}/apache-zookeeper-{{ zookeeper_version }}-bin.tar.gz.sha512"
+  with_items:
+    - "https://dlcdn.apache.org/zookeeper/zookeeper-{{ zookeeper_version }}"
+  loop_control:
+    loop_var: download_url
+
+- name: Extract ZooKeeper binary package
+  unarchive:
+    remote_src: yes
+    src: "{{ temp_dir.path }}/apache-zookeeper-{{ zookeeper_version }}-bin.tar.gz"
+    dest: "{{ temp_dir.path }}"
+
+- name: Install ZooKeeper
+  copy:
+    src: "{{ temp_dir.path }}/apache-zookeeper-{{ zookeeper_version }}-bin"
+    dest: "{{ zookeeper_install_directory }}"
+    owner: "{{ zookeeper_service_user }}"
+    group: "{{ zookeeper_service_group }}"
+    remote_src: yes
+    mode: 0755
+
+- name: Create a symbolic link
+  ansible.builtin.file:
+    src: "{{ zookeeper_install_directory }}/apache-zookeeper-{{ zookeeper_version }}-bin"
+    dest: "{{ zookeeper_install_directory }}/zookeeper"
+    owner: "{{ zookeeper_service_user }}"
+    group: "{{ zookeeper_service_group }}"
+    state: link
+
+- name: Delete temporary directory...
+  file:
+    path: "{{ temp_dir.path }}"
+    state: absent
+
+- name: Deleted
+  ansible.builtin.debug:
+    msg: "{{ temp_dir.path }}"
+
+- name: Remove sample Zookeeper configuration
+  ansible.builtin.file:
+    path: "{{ zookeeper_install_directory }}/zookeeper/conf/zoo_sample.cfg"
+    state: absent
+
+- name: Configure Zookeeper
+  ansible.builtin.template:
+    src: "{{ item.path }}.j2"
+    dest: "/{{ item.path }}"
+    owner: "{{ zookeeper_service_user }}"
+    group: "{{ zookeeper_service_group }}"
+    mode: "{{ item.mode }}"
+  with_items:
+    - path: "opt/zookeeper/conf/zoo.cfg"
+      mode: '0644'
+    - path: "opt/zookeeper/conf/zookeeper-env.sh"
+      mode: '0755'
+
+- name: Configure Zookeeper service
+  ansible.builtin.template:
+    src: "{{ item }}.j2"
+    dest: "/{{ item }}"
+    owner: root
+    group: root
+    mode: '0644'
+  with_items:
+    - "etc/systemd/system/zookeeper.service"
+
+- name: Disable the zookeeper service
+  service:
+    name: zookeeper
+    enabled: no

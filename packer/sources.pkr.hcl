@@ -1,5 +1,5 @@
 source "amazon-ebs" "builder" {
-  ami_name              = "${var.ami_name_prefix}-${var.version}"
+  ami_name              = "${var.ami_name_prefix}-ami-${var.version}"
   ami_users             = var.ami_account_ids
   communicator          = "ssh"
   force_delete_snapshot = var.force_delete_snapshot
@@ -42,8 +42,13 @@ source "amazon-ebs" "builder" {
     random = false
   }
 
+  run_tags = {
+    AMI     = "${var.ami_name_prefix}"
+    Service = "packer-builder"
+  }
+
   tags = {
-    Name    = "${var.ami_name_prefix}-${var.version}"
     Builder = "packer-{{packer_version}}"
+    Name    = "${var.ami_name_prefix}-ami-${var.version}"
   }
 }
