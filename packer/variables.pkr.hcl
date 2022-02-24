@@ -80,7 +80,7 @@ variable "resource_bucket_zookeeper_prefix" {
 
 variable "root_volume_size_gib" {
   type        = number
-  default     = 20
+  default     = 10
   description = "The EC2 instance root volume size in Gibibytes (GiB)"
 }
 
