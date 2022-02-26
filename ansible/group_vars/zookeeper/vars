@@ -7,6 +7,6 @@ volume_mounts:
     file_system_type: xfs
     logical_volume: data
     volume_group: zookeeper
-    mount_point: /opt/zookeeper/data
+    mount_point: /data/zookeeper
 
 zookeeper_version: 3.7.0
