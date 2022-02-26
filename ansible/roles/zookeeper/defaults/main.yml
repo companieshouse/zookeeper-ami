@@ -4,6 +4,7 @@ zookeeper_autopurge_interval_hours: 1
 zookeeper_data_directory: /data/zookeeper
 zookeeper_extra_jvm_flags: -Xms{{ zookeeper_heap_mb }}m
 zookeeper_heap_mb: 512
+zookeeper_home: "{{ zookeeper_install_directory }}/zookeeper"
 zookeeper_init_limit_ticks: 10
 zookeeper_install_directory: /opt
 zookeeper_service_group: zookeeper
