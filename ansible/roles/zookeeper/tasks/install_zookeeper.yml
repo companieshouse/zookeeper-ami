@@ -93,6 +93,13 @@
   with_items:
     - "etc/systemd/system/zookeeper.service"
 
+- name: Set ownership and permissions for data directory {{ zookeeper_data_directory }}
+  file:
+    path: "{{ zookeeper_data_directory }}"
+    owner: "{{ zookeeper_service_user }}"
+    group: "{{ zookeeper_service_group }}"
+    mode: '0755'
+
 - name: Disable the zookeeper service
   service:
     name: zookeeper
