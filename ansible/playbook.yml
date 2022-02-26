@@ -3,4 +3,6 @@
 - hosts: zookeeper
   become: true
   roles:
+    - aws-nvme-device-files
+    - mounted-volume
     - zookeeper
