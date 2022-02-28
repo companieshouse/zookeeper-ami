@@ -23,7 +23,7 @@ variable "aws_region" {
 
 variable "aws_source_ami_filter_name" {
   type        = string
-  default     = "amzn2-base-*"
+  default     = "amzn2-base-0.2.12"
   description = "The source AMI filter string. Any filter described by the DescribeImages API documentation is valid. If multiple images match then the latest will be used"
 }
 
@@ -78,7 +78,7 @@ variable "resource_bucket_zookeeper_prefix" {
   description = "The object prefix for ZooKeeper packages within the S3 resources bucket"
 }
 
-variable "root_volume_size_gb" {
+variable "root_volume_size_gib" {
   type        = number
   default     = 20
   description = "The EC2 instance root volume size in Gibibytes (GiB)"

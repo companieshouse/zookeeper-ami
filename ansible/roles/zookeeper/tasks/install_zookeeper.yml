@@ -13,14 +13,6 @@
     groups: "{{ zookeeper_service_group }}"
     system: yes
 
-- name: Create {{ zookeeper_install_directory }} persistent data directory
-  file:
-    path: "{{ zookeeper_install_directory }}"
-    state: directory
-    owner: "{{ zookeeper_service_user }}"
-    group: "{{ zookeeper_service_group }}"
-    mode: 0755
-
 - name: Create temporary directory...
   tempfile:
     state: directory
@@ -59,7 +51,7 @@
 - name: Create a symbolic link
   ansible.builtin.file:
     src: "{{ zookeeper_install_directory }}/apache-zookeeper-{{ zookeeper_version }}-bin"
-    dest: "{{ zookeeper_install_directory }}/zookeeper"
+    dest: "{{ zookeeper_home }}"
     owner: "{{ zookeeper_service_user }}"
     group: "{{ zookeeper_service_group }}"
     state: link
@@ -75,7 +67,7 @@
 
 - name: Remove sample Zookeeper configuration
   ansible.builtin.file:
-    path: "{{ zookeeper_install_directory }}/zookeeper/conf/zoo_sample.cfg"
+    path: "{{ zookeeper_home }}/conf/zoo_sample.cfg"
     state: absent
 
 - name: Configure Zookeeper
@@ -100,6 +92,13 @@
     mode: '0644'
   with_items:
     - "etc/systemd/system/zookeeper.service"
+
+- name: Set ownership and permissions for data directory {{ zookeeper_data_directory }}
+  file:
+    path: "{{ zookeeper_data_directory }}"
+    owner: "{{ zookeeper_service_user }}"
+    group: "{{ zookeeper_service_group }}"
+    mode: '0755'
 
 - name: Disable the zookeeper service
   service:
