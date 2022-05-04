@@ -2,6 +2,33 @@
 
 ansible_user: ec2-user
 
+logrotate_options:
+  - daily
+  - rotate 7
+  - create
+  - dateext
+  - compress
+
+logrotate_btmp_enable: true
+logrotate_btmp:
+  logs:
+    - /var/log/btmp
+  options:
+    - missingok
+    - monthly
+    - create 0660 root utmp
+    - rotate 1
+
+logrotate_wtmp_enable: true
+logrotate_wtmp:
+  logs:
+    - /var/log/wtmp
+  options:
+    - monthly
+    - create 0664 root utmp
+    - minsize 1M
+    - rotate 1
+
 volume_mounts:
   - device: /dev/xvdb
     file_system_type: xfs
