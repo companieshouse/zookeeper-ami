@@ -16,7 +16,7 @@ logrotate_btmp:
   options:
     - missingok
     - monthly
-    - create 0660 root utmp
+    - create 0600 root utmp
     - rotate 1
 
 logrotate_wtmp_enable: true
