@@ -36,4 +36,4 @@ volume_mounts:
     volume_group: zookeeper
     mount_point: /data/zookeeper
 
-zookeeper_version: 3.7.0
+zookeeper_version: 3.7.1
