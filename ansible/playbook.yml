@@ -7,3 +7,4 @@
     - mounted-volume
     - zookeeper
     - logrotate
+    - prometheus-node-exporter
