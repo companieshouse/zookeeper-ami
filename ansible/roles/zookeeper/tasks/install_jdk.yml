@@ -1,6 +1,4 @@
 ---
 
-- name: Install Corretto
-  yum:
-    name: java-17-amazon-corretto-headless
-    state: present
+- name: Install openjdk11
+  command: amazon-linux-extras install -y java-openjdk11
