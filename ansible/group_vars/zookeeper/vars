@@ -29,6 +29,8 @@ logrotate_wtmp:
     - minsize 1M
     - rotate 1
 
+resource_limits_remove_existing: true
+
 volume_mounts:
   - device: /dev/xvdb
     file_system_type: xfs
